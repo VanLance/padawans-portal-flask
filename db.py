@@ -2,11 +2,13 @@
 users = {
   '1': {
     'username': 'dsmith',
-    'email' : 'dsmith@ct.com'
+    'email' : 'dsmith@ct.com',
+    'password': "so secret"
   },
   '2' : {
     'username': "brandtc",
-    'email': 'brandtc@ct.com'
+    'email': 'brandtc@ct.com',
+    'password': "so secret"
   }
 }
 

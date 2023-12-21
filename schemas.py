@@ -1,6 +1,6 @@
 from marshmallow import Schema, fields
 
-class User(Schema):
+class UserSchema(Schema):
   id = fields.Str(dump_only = True)
   email = fields.Str(required = True)
   username = fields.Str(required = True)
@@ -8,7 +8,8 @@ class User(Schema):
   first_name = fields.Str()
   last_name = fields.Str()
 
-class Post(Schema):
+class PostSchema(Schema):
   id = fields.Str(dump_only = True)
   body = fields.Str(required = True)
   timestamp = fields.DateTime(dump_only = True)
+  user_id = fields.Str(required = True)
