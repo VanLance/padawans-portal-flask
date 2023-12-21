@@ -2,22 +2,22 @@ from flask import request
 from uuid import uuid4
 
 
-from app import app
 from db import posts, users
+from . import bp
 # post routes
 
-@app.get('/post')
+@bp.get('/')
 def get_posts():
   return { 'posts': list(posts.values()) }
 
-@app.get('/post/<post_id>')
+@bp.get('/<post_id>')
 def get_post(post_id):
   try:
     return {'post': posts[post_id]}, 200
   except KeyError:
     return {'message': "Invalid Post"}, 400
 
-@app.post('/post')
+@bp.post('/')
 def create_post():
   post_data = request.get_json()
   user_id = post_data['user_id']
@@ -26,7 +26,7 @@ def create_post():
     return { 'message': "Post Created" }, 201
   return { 'message': "Invalid User"}, 401
 
-@app.put('/post/<post_id>')
+@bp.put('/<post_id>')
 def update_post(post_id):
   try:
     post = posts[post_id]
@@ -38,7 +38,7 @@ def update_post(post_id):
   except:
     return {'message': "Invalid Post Id"}, 400
 
-@app.delete('/post/<post_id>')
+@bp.delete('/<post_id>')
 def delete_post(post_id):
   try:
     del posts[post_id]
