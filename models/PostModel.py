@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 
 from app import db
 
@@ -8,7 +8,7 @@ class PostModel(db.Model):
 
   id = db.Column(db.Integer, primary_key = True)
   body = db.Column(db.String, nullable = False)
-  timestamp = db.Column(db.String)
+  timestamp = db.Column(db.DateTime, default = datetime.utcnow)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
 
   def __repr__(self):
