@@ -1,6 +1,4 @@
-from flask import request
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from uuid import uuid4
 from flask.views import MethodView
 from flask_smorest import abort
 

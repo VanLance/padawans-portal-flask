@@ -1,3 +1,3 @@
-
+from .PostModel import PostModel
  
-from .user_model import UserModel, PostModel
+from .user_model import UserModel

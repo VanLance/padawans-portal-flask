@@ -1,12 +1,10 @@
-from flask import request
-
 from flask.views import MethodView
 from flask_jwt_extended import get_jwt_identity, jwt_required
 from flask_smorest import abort
 from . import bp
 
 from schemas import UserSchema, UserSchemaNested
-from models.user_model import UserModel
+from models import UserModel
 # user routes
 
 @bp.route('/user/<user_id>')
