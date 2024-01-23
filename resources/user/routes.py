@@ -46,16 +46,7 @@ class UserList(MethodView):
   def get(self):
    return UserModel.query.all()
   
-  @bp.arguments(UserSchema)
-  def post(self, user_data):
-    try: 
-      user = UserModel()
-      user.from_dict(user_data)
-      user.commit()
-      return { 'message' : f'{user_data["username"]} created' }, 201
-    except:
-      abort(400, message='Username and Email Already taken')
-      
+
 @bp.route('/user/follow/<followed_id>')
 class FollowUser(MethodView):
 
