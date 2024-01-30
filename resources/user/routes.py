@@ -12,9 +12,14 @@ class User(MethodView):
 
   @bp.response(200, UserSchemaNested)
   def get(self,user_id):
-    user = UserModel.query.get(user_id)
+    user = None
+    print(user_id)
+    if user_id.isdigit():
+      user = UserModel.query.get(user_id)
+    if not user:
+      user = UserModel.query.filter_by(username = user_id).first()
+      print(user)
     if user:
-      print(user.posts.all())
       return user
     else:
       abort(400, message='User not found')
