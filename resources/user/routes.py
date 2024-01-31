@@ -11,7 +11,7 @@ from models import UserModel
 class User(MethodView):
 
   @bp.response(200, UserSchemaNested)
-  def get(self,user_id):
+  def get(self, user_id):
     user = None
     print(user_id)
     if user_id.isdigit():
